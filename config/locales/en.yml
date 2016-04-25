@@ -21,3 +21,20 @@
 
 en:
   hello: "Hello world"
+  activerecord:
+    attributes:
+      tweet:
+        message: "A tweet"
+      user:
+        username: "A username"
+    errors:
+      models:
+        tweet:
+          attributes:
+            message:
+              blank: " is missing - you need to write something!"
+              too_long: " can only be 140 characters..."
+        user:
+          attributes:
+            username:
+              taken: " must be unique. Sorry, dude...."

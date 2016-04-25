@@ -1,0 +1,11 @@
+<h2>Welcome @<%= current_user.username %>,</h2>
+<p>Here's what your friends are saying:</p>
+
+<div>
+	<% @following_tweets.each do |t| %>
+		<div>
+			<p>@<%= t.user.username %> says:</p>
+			<p><%= t.message %></p>
+		</div>
+	<% end %>
+</div>
