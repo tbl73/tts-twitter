@@ -35,7 +35,7 @@ class EpicenterController < ApplicationController
 
    User.all.each do |n|
       if n.following.include?(current_user.id)
-        @followers.push(n.username)
+        @followers.push(n)
       end
     end
 
@@ -46,13 +46,17 @@ class EpicenterController < ApplicationController
 
     User.all.each do |n|
       if current_user.following.include?(n.id)
-        @all_following.push(n.username)
+        @all_following.push(n)
       end
     end
   end
 
   def all_users
     @users = User.all
+  end
+
+  def tag_tweets
+    @tag = Tag.find(params[:id])
   end
 
 end

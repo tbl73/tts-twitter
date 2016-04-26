@@ -22,7 +22,7 @@
 				<% @following_tweets.each do |t| %>
 			<p>
 				@<%= t.user.username %> says:</p>
-				<p><%= t.message %></p>
+				<p><%= t.message.html_safe %></p>
 
 			<% end %>
 		</div>

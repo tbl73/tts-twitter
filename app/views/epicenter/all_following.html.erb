@@ -1,9 +1,6 @@
 <h2>All Those You Follow</h2>
 
-<p>
+
 	<% @all_following.each do |name| %>
-		@<%= name %>
+		<p>@<%= link_to name.username, show_user_path(id: name.id) %></p>
 	<% end %>
-
-
-</p>

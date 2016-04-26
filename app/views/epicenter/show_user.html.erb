@@ -17,10 +17,10 @@
 <% end %>
 
 
-<% @user.tweets.each do |t| %>
+<% @user.tweets.order(created_at: :desc).each do |t| %>
 	<div>
 		<p><%= time_ago_in_words(t.created_at).capitalize %> ago, @<%= t.user.username %> said:</p>
-		<p><%= t.message %></p>
+		<p><%= t.message.html_safe %></p>
 	</div>
 <% end %>
 

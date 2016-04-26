@@ -1,6 +1,8 @@
 class TweetsController < ApplicationController
   before_action :set_tweet, only: [:show, :edit, :update, :destroy]
 
+  include TweetsHelper
+
   before_filter :authenticate_user!
 
   # GET /tweets
@@ -26,7 +28,10 @@ class TweetsController < ApplicationController
   # POST /tweets
   # POST /tweets.json
   def create
-    @tweet = Tweet.new(tweet_params)
+    @tweet = Tweet.create(tweet_params)
+
+    #pass @tweet to the helper controller and then save it to itself
+    get_tagged(@tweet)
 
     respond_to do |format|
       if @tweet.save
