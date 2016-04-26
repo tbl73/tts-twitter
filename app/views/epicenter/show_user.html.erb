@@ -12,11 +12,14 @@
 		<%= link_to "Follow", now_following_path(id: @user.id), class: "btn btn-primary" %>
 	<% end %>
 </p>
+<% else %>
+	<p><%= link_to "New Tweet", new_tweet_path, class: "btn btn-info" %></p>
 <% end %>
+
 
 <% @user.tweets.each do |t| %>
 	<div>
-		<p>@<%= t.user.username %></p>
+		<p><%= time_ago_in_words(t.created_at).capitalize %> ago, @<%= t.user.username %> said:</p>
 		<p><%= t.message %></p>
 	</div>
 <% end %>

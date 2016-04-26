@@ -29,4 +29,30 @@ class EpicenterController < ApplicationController
   	current_user.save
   	redirect_to :back
   end
+  
+  def all_followers
+   @followers = []
+
+   User.all.each do |n|
+      if n.following.include?(current_user.id)
+        @followers.push(n.username)
+      end
+    end
+
+  end
+
+  def all_following
+    @all_following = []
+
+    User.all.each do |n|
+      if current_user.following.include?(n.id)
+        @all_following.push(n.username)
+      end
+    end
+  end
+
+  def all_users
+    @users = User.all
+  end
+
 end

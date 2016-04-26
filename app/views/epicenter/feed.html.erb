@@ -1,11 +1,18 @@
-<h2>Welcome @<%= current_user.username %>,</h2>
+<h2>Welcome @<%= link_to current_user.username, show_user_path(id: current_user.id) %>,</h2>
+<p><%= link_to "New Tweet", new_tweet_path, class: "btn btn-info"%>
+
+</p>
 <p>Here's what your friends are saying:</p>
 
 <div>
 	<% @following_tweets.each do |t| %>
-		<div>
-			<p>@<%= t.user.username %> says:</p>
+			<p>
+				@<%= t.user.username %> says:</p>
 			<p><%= t.message %></p>
-		</div>
-	<% end %>
+
+		<% end %>
 </div>
+
+<p>Look at your followers: <%= link_to "Followers", followers_path %></p>
+
+<p>Here are all the people you're following: <%= link_to "Following", following_path %></p>
