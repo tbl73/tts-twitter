@@ -2,8 +2,8 @@
 <html>
 <head>
   <title>TtsTwitter</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag    'application', media: 'all' %>
+  <%= javascript_include_tag 'application' %>
   <%= csrf_meta_tags %>
 </head>
 <body>
@@ -24,12 +24,26 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
       <ul class="nav navbar-nav">
-        <li><%= link_to "Home", root_path, class: "btn btn-info navbar-btn"%> </li>
-   		<li><%= link_to "New Tweet", new_tweet_path, class: "btn btn-info navbar-btn" %> </li>
-      <li><%= link_to "Our Users", all_users_path, class: "btn btn-info navbar-btn" %></li>
-      <% if user_signed_in? %>
-      <li><%= link_to "My Tweets", show_user_path(id: current_user.id), class: "btn btn-info navbar-btn" %></li>
+        <li><%= link_to root_path do %>
+          <i class="fa fa-home" aria-hidden="true"> Home</i>
+          <% end %>
+         </li>
+         <li><%= link_to new_tweet_path do %>
+        <i class="fa fa-plus-circle" aria-hidden="true"> New Tweet</i>
+        <% end %>
+       </li>
+         <% if user_signed_in? %>
+      <li><%= link_to show_user_path(id: current_user.id) do %>
+      <i class="fa fa-twitter" aria-hidden="true"> My Tweets</i>
       <% end %>
+      </li>
+      <% end %>
+   		
+      <li><%= link_to all_users_path do %>
+        <i class="fa fa-users" aria-hidden="true"> See All Users</i>
+        <% end %>
+      </li>
+      
       
       <!--   <li><a href="#">Link</a></li> -->
         

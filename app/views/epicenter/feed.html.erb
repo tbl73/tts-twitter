@@ -1,18 +1,30 @@
-<h2>Welcome @<%= link_to current_user.username, show_user_path(id: current_user.id) %>,</h2>
-<p><%= link_to "New Tweet", new_tweet_path, class: "btn btn-info"%>
+<div class="row">
+	<div class="col-md-12 text-center">
+		<h1>Rockin' Robin</h1>
+		<h3>Welcome <%= link_to current_user.username.capitalize, show_user_path(id: current_user.id) %></h3>
+<!-- <p><%#= link_to "New Tweet", new_tweet_path, class: "btn btn-info"%> -->
+	</div>
+</div>
+<p></p>
+<div class="row">
+	<div class="col-md-6">
+		<div class="well">
 
-</p>
-<p>Here's what your friends are saying:</p>
+			<p>Look at your followers: <%= link_to "Followers", followers_path %></p>
 
-<div>
-	<% @following_tweets.each do |t| %>
+			<p>Here are all the people you're following: <%= link_to "Following", following_path %></p>
+		</div>
+	</div>
+	<div class="col-md-6">
+		<div class="well">
+			<p>Here's what your friends are saying:</p>
+
+				<% @following_tweets.each do |t| %>
 			<p>
 				@<%= t.user.username %> says:</p>
-			<p><%= t.message %></p>
+				<p><%= t.message %></p>
 
-		<% end %>
+			<% end %>
+		</div>
+	</div>
 </div>
-
-<p>Look at your followers: <%= link_to "Followers", followers_path %></p>
-
-<p>Here are all the people you're following: <%= link_to "Following", following_path %></p>
